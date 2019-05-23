@@ -6,5 +6,5 @@ export interface signup_types{
 export interface add_todo_reguest{
    nama_kegiatan: string,
    timestamp: number,
-   usernanme: string
+   username: string
 }

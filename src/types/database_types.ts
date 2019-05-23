@@ -6,5 +6,5 @@ export type user_account_type = {
 export type todo_item_type = {
    nama_kegiatan: string,
    timestamp: number,
-   usernanme: string
+   username: string
 }

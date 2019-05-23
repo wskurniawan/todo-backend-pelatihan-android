@@ -23,7 +23,7 @@ export async function insert(data: todo_item_type): Promise<boolean>{
 
 export async function get_list(username: string): Promise<todo_item_type[]>{
    try {
-      var list_todo = await model.find({ username: username });
+      var list_todo = await model.find({ username: username }, { _id: 0, __v: 0});
    } catch (error) {
       return Promise.reject(error);
    }

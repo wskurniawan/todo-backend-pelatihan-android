@@ -139,7 +139,7 @@ app.get('/get-todo', async function(req, res, next){
    response_helper.success(res, { list_todo: list_todo });
 });
 
-app.post('add-todo', async function(req, res, next){
+app.post('/add-todo', async function(req, res, next){
    const schema = joi.object().keys({
       nama_kegiatan: joi.string().required(),
       timestamp: joi.number().required()
@@ -154,9 +154,10 @@ app.post('add-todo', async function(req, res, next){
    next();
 }, async function(req, res, next){
    const request_data = <add_todo_reguest> req.body;
+   console.log(req.user);
 
    try {
-      await todo_item_model.insert({ usernanme: req.user.username, nama_kegiatan: request_data.nama_kegiatan, timestamp: request_data.timestamp });
+      await todo_item_model.insert({ username: req.user.username, nama_kegiatan: request_data.nama_kegiatan, timestamp: request_data.timestamp });
    } catch (error) {
       return response_helper.internal_server_error(res, error.message);
    }
